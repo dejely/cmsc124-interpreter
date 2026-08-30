@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# run
+binary=./target/release/cmsc124-interpreter
+if [[ -f "$binary.exe" ]]; then
+  binary="$binary.exe"
+fi
+exec "$binary" "$@"
