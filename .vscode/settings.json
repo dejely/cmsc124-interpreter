@@ -1,0 +1,7 @@
+{
+  "prettier.prettierPath": "./node_modules/prettier",
+  "[rust]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  }
+}
