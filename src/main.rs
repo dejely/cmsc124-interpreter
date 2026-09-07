@@ -1,6 +1,8 @@
 mod scanner;
 mod token;
 
-fn main(){
+use scanner::Scanner;
+
+fn main() {
     println!("Hello, JM & Dejel!");
 }
