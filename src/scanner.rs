@@ -1,4 +1,18 @@
-use crate::token::Token; 
+use crate::token::Token;
+
+/*
+NOTES:
+
+Use `&mut self` in function parameters
+for methods that need to change the existing scanner
+
+E.G. function advance changes self.current.
+--------------------------------------------
+Use `&self` in function parameters
+for methods that are only for reading without changing the existing scanner.
+
+E.G. function is_at_end only reads self.current and self.source.len() without changing them.
+*/
 
 /*  
  * Scanner struct and implementation
@@ -16,7 +30,6 @@ pub struct Scanner {
     current: usize,
     line: usize,
 }
-
 
 impl Scanner {
     pub fn new(source: String) -> Self {
@@ -38,9 +51,8 @@ impl Scanner {
         Thus: current >= source.len() => true
     */
     fn is_at_end(&self) -> bool {
-            self.current >= self.source.len()
-        }
-
+        self.current >= self.source.len()
+    }
 
     // reads the next character in the source code and returns it.
     fn advance(&mut self) -> char {
@@ -51,11 +63,8 @@ impl Scanner {
 
     // safely looks ahead without moving current.
     fn peek(&self) -> char {
-        if self.is_at_end() {
-            '\0'
-        } else {
-            self.source[self.current]
-        }
+        if self.is_at_end() { '\0' } else { self.source[self.current] }
     }
 
-    }
+    pub fn scan_tokens(&mut self) -> Vec<Token>;
+}
