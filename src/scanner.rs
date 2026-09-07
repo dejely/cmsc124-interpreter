@@ -100,6 +100,10 @@ impl Scanner {
             ';' => self.add_token(TokenType::Semicolon),
             '*' => self.add_token(TokenType::Star),
             '/' => self.add_token(TokenType::Slash),
+            '!' => self.add_token(TokenType::Bang),
+            '=' => self.add_token(TokenType::Equal),
+            '>' => self.add_token(TokenType::Greater),
+            '<' => self.add_token(TokenType::Less),
             _ => {}
         }
     }
