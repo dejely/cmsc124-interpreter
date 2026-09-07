@@ -1,4 +1,4 @@
-use crate::token::{Token, TokenType}; // Refers to the Token struct defined in token.rs
+use crate::token::{ Token, TokenType }; // Refers to the Token struct defined in token.rs
 
 /*
 NOTES:
@@ -63,11 +63,7 @@ impl Scanner {
 
     // safely looks ahead without moving current.
     fn peek(&self) -> char {
-        if self.is_at_end() {
-            '\0'
-        } else {
-            self.source[self.current]
-        }
+        if self.is_at_end() { '\0' } else { self.source[self.current] }
     }
 
     pub fn scan_tokens(&mut self) -> Vec<Token> {
@@ -76,12 +72,14 @@ impl Scanner {
             self.scan_token();
         }
 
-        self.tokens.push(Token::new(
-            TokenType::Eof,
-            String::new(), //empty lexeme
-            None,
-            self.line,
-        ));
+        self.tokens.push(
+            Token::new(
+                TokenType::Eof,
+                String::new(), //empty lexeme
+                None,
+                self.line
+            )
+        );
         self.tokens.clone() // Return a copy of the tokens vector
     }
 
@@ -101,6 +99,7 @@ impl Scanner {
             '+' => self.add_token(TokenType::Plus),
             ';' => self.add_token(TokenType::Semicolon),
             '*' => self.add_token(TokenType::Star),
+            '/' => self.add_token(TokenType::Slash),
             _ => {}
         }
     }
@@ -110,9 +109,13 @@ impl Scanner {
             .iter()
             .collect(); // build to a string
 
-        self.tokens.push(Token::new(
-            token_type, lexeme, None, // No literal value for now
-            self.line,
-        ));
+        self.tokens.push(
+            Token::new(
+                token_type,
+                lexeme,
+                None, // No literal value for now
+                self.line
+            )
+        );
     }
 }
