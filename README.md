@@ -1,16 +1,24 @@
 # Design and Implementation of Programming Languages(CMSC124): Interpreter
 
-## Single Character Tokens
-```bash
-Grouping:
-( ) { } -> LEFT_PAREN, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE 
+## Lexical Structure
 
-Arithmetic:
-+ - * / -> PLUS, MINUS, STAR, SLASH
+### Single-character tokens
 
-Punctuation:
-, ; . -> COMMA, SEMICOLON, DOT
-
-Assignment/comparison starters:
-= ! < > -> EQUAL, BANG, LESS, GREATER
-```
+| Lexeme | Token Type | Purpose |
+|---|---|---|
+| `(` | `LEFT_PAREN` | Opens a grouped expression |
+| `)` | `RIGHT_PAREN` | Closes a grouped expression |
+| `{` | `LEFT_BRACE` | Starts a code block |
+| `}` | `RIGHT_BRACE` | Ends a code block |
+| `+` | `PLUS` | Addition |
+| `-` | `MINUS` | Subtraction |
+| `*` | `STAR` | Multiplication |
+| `/` | `SLASH` | Division |
+| `=` | `EQUAL` | Assignment |
+| `>` | `GREATER_THAN` | Greater-than comparison |
+| `<` | `LESS_THAN` | Less-than comparison |
+| `;` | `SEMICOLON` | Terminates a statement |
+| `,` | `COMMA` | Separates values or arguments |
+| `[` | `LEFT_BRACKET` | Opens an array or index expression |
+| `]` | `RIGHT_BRACKET` | Closes an array or index expression |
+| `!` | `BANG` | Logical negation / prefix for `!=` |
