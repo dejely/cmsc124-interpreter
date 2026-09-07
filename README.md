@@ -22,3 +22,11 @@
 | `[` | `LEFT_BRACKET` | Opens an array or index expression |
 | `]` | `RIGHT_BRACKET` | Closes an array or index expression |
 | `!` | `BANG` | Logical negation / prefix for `!=` |
+
+
+## File Structure
+
+| File name | Purpose |
+|---|---|
+| `src/tokens.rs` | `for TokenType, Literal, Token` |
+| `src/scanner.rs` | `reads the raw source code character by character and turns it into Tokens`| 
