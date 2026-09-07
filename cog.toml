@@ -2,6 +2,6 @@
 script = """
 #!/bin/sh
 cog verify --file "$1"
+"""
 [commit_types]
 meta = { changelog_title = "", omit_from_changelog = true }
-"""
