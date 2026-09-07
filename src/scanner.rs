@@ -42,14 +42,14 @@ impl Scanner {
         }
 
 
-    // reads the next character in the source code and returns it
+    // reads the next character in the source code and returns it.
     fn advance(&mut self) -> char {
         let c = self.source[self.current];
         self.current += 1;
         c
     }
 
-    // safely looks ahead without moving current
+    // safely looks ahead without moving current.
     fn peek(&self) -> char {
         if self.is_at_end() {
             '\0'
