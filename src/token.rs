@@ -1,3 +1,4 @@
+// This may be for a seperate file
 #[derive(Debug, Clone, PartialEq)]
 pub enum TokenType {
     // Single-character tokens.
@@ -64,14 +65,14 @@ impl Token {
         token_type: TokenType,
         lexeme: String,
         literal: Option<Literal>,
-        line: usize,
+        line: usize
     ) -> Self {
         Self {
             // Just create a new Token struct since we return a Token
             token_type, // This is shorthand for token_type: token_type
-            lexeme,     // This is shorthand for lexeme: lexeme
-            literal,    // This is shorthand for literal: literal
-            line,       // This is shorthand for line: line
+            lexeme, // This is shorthand for lexeme: lexeme
+            literal, // This is shorthand for literal: literal
+            line, // This is shorthand for line: line
         }
     }
 }
