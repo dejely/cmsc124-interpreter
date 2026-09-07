@@ -35,16 +35,19 @@ pub enum TokenType {
     And,
     Class,
     Else,
+    True,
     False,
     Fun,
     For,
     If,
 
+    // Specific language keywords here:
+
     // End of Input.
     Eof,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Token {
     token_type: TokenType,
     lexeme: String,
@@ -52,7 +55,7 @@ pub struct Token {
     line: usize,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum Literal {
     Number(f64),
     String(String),
@@ -76,4 +79,3 @@ impl Token {
         }
     }
 }
-

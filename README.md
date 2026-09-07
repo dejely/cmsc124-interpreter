@@ -68,6 +68,12 @@
 |---|---|---|
 | End of source | `EOF` | Marks the end of the token stream |
 
+## Week 1 Language Design Decisions
+- `{}` creates blocks.
+- `[]` is reserved for arrays/indexing.
+- `;` ends statements.
+- `()` groups expressions and calls functions.
+Planned keywords include if, else, for, fun, and var.
 
 ## File Structure
 
