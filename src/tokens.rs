@@ -46,3 +46,10 @@ pub struct Token {
     literal: Option<Literal>,
     line: usize,
 }
+
+pub enum Literal {
+    Number(f64),
+    String(String),
+    Boolean(bool),
+    Null,
+}
