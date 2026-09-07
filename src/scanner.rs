@@ -1,4 +1,4 @@
-use crate::token::Token;
+use crate::token::Token; // Refers to the Token struct defined in token.rs
 
 /*
 NOTES:
@@ -66,5 +66,40 @@ impl Scanner {
         if self.is_at_end() { '\0' } else { self.source[self.current] }
     }
 
-    pub fn scan_tokens(&mut self) -> Vec<Token>;
+    pub fn scan_tokens(&mut self) -> Vec<Token> {
+        while !self.is_at_end() {
+            self.start = self.current;
+            self.scan_token();
+        }
+
+        self.tokens.push(
+            Token::new(
+                TokenType::Eof,
+                String::new(), //empty lexeme
+                None,
+                self.line
+            )
+        );
+        self.tokens
+    }
+
+    fn scan_token(&mut self) {
+        let c = self.advance(); // sets the current character to c and moves the current pointer forward by 1
+
+        match c {
+            '{' => self.add_token(TokenType::LeftBrace),
+            '}' => self.add_token(TokenType::RightBrace),
+            '(' => self.add_token(TokenType::LeftParen),
+            ')' => self.add_token(TokenType::RightParen),
+            '[' => self.add_token(TokenType::LeftBracket),
+            ']' => self.add_token(TokenType::RightBracket),
+            ',' => self.add_token(TokenType::Comma),
+            '.' => self.add_token(TokenType::Dot),
+            '-' => self.add_token(TokenType::Minus),
+            '+' => self.add_token(TokenType::Plus),
+            ';' => self.add_token(TokenType::Semicolon),
+            '*' => self.add_token(TokenType::Star),
+            _ => {}
+        }
+    }
 }
