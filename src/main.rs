@@ -1,6 +1,6 @@
 mod scanner;
 mod token;
 
-fn main(){
+fn main() {
     println!("Hello, JM & Dejel!");
 }

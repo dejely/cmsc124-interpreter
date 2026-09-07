@@ -1,4 +1,4 @@
-use crate::token::Token; // Refers to the Token struct defined in token.rs
+use crate::token::{Token, TokenType}; // Refers to the Token struct defined in token.rs
 
 /*
 NOTES:
@@ -14,14 +14,14 @@ for methods that are only for reading without changing the existing scanner.
 E.G. function is_at_end only reads self.current and self.source.len() without changing them.
 */
 
-/*  
- * Scanner struct and implementation
-    source code
-        ↓
-    scanner.rs
-        ↓
-    Vec<Token>
- */
+/*
+* Scanner struct and implementation
+   source code
+       ↓
+   scanner.rs
+       ↓
+   Vec<Token>
+*/
 
 pub struct Scanner {
     source: Vec<char>,
@@ -63,7 +63,11 @@ impl Scanner {
 
     // safely looks ahead without moving current.
     fn peek(&self) -> char {
-        if self.is_at_end() { '\0' } else { self.source[self.current] }
+        if self.is_at_end() {
+            '\0'
+        } else {
+            self.source[self.current]
+        }
     }
 
     pub fn scan_tokens(&mut self) -> Vec<Token> {
@@ -72,15 +76,13 @@ impl Scanner {
             self.scan_token();
         }
 
-        self.tokens.push(
-            Token::new(
-                TokenType::Eof,
-                String::new(), //empty lexeme
-                None,
-                self.line
-            )
-        );
-        self.tokens
+        self.tokens.push(Token::new(
+            TokenType::Eof,
+            String::new(), //empty lexeme
+            None,
+            self.line,
+        ));
+        self.tokens.clone() // Return a copy of the tokens vector
     }
 
     fn scan_token(&mut self) {
@@ -101,5 +103,16 @@ impl Scanner {
             '*' => self.add_token(TokenType::Star),
             _ => {}
         }
+    }
+
+    fn add_token(&mut self, token_type: TokenType) {
+        let lexeme: String = self.source[self.start..self.current] // from start to finish of token
+            .iter()
+            .collect(); // build to a string
+
+        self.tokens.push(Token::new(
+            token_type, lexeme, None, // No literal value for now
+            self.line,
+        ));
     }
 }
