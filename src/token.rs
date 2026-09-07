@@ -40,6 +40,15 @@
         Fun,
         For,
         If,
+        Nil,
+        Or,
+        Print,
+        Return,
+        Super,
+        This,
+        True,
+        Var,
+        While,
         
         // End of Input.
         Eof,
